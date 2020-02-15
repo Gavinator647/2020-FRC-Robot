@@ -14,10 +14,15 @@ public class TeleopDrive extends CommandBase {
   /**
    * Creates a new TeleopDrive.
    */
-  private final Drivetrain drive1 = new Drivetrain();
-  public TeleopDrive() {
+  private final Drivetrain m_Drive;
+  private double moveSpeed;
+  private double rotateSpeed;
+  public TeleopDrive(Drivetrain subsystem, double moveSpeed, double rotateSpeed) {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(drive1);
+    m_Drive = subsystem;
+    addRequirements(m_Drive);
+    this.moveSpeed = moveSpeed;
+    this.rotateSpeed = rotateSpeed;
   }
 
   // Called when the command is initially scheduled.
@@ -28,10 +33,7 @@ public class TeleopDrive extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    //double moveSpeed = RobotContainer.mainStick.getRawAxis(1);
-    //double rotateSpeed = RobotContainer.mainStick.getRawAxis(4);
-    //m_Drive.arcadeDrive(moveSpeed, rotateSpeed);
-    
+    m_Drive.arcadeDrive(moveSpeed, rotateSpeed);
   }
 
   // Called once the command ends or is interrupted.

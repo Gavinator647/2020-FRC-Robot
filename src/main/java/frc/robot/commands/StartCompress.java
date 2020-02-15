@@ -13,9 +13,9 @@ import frc.robot.subsystems.Intake;
 // NOTE:  Consider using this command inline, rather than writing a subclass.  For more
 // information, see:
 // https://docs.wpilib.org/en/latest/docs/software/commandbased/convenience-features.html
-public class DeployIntake extends InstantCommand {
+public class StartCompress extends InstantCommand {
   private final Intake m_Intake;
-  public DeployIntake(Intake subsystem) {
+  public StartCompress(Intake subsystem) {
     // Use addRequirements() here to declare subsystem dependencies.
     m_Intake=subsystem;
     addRequirements(m_Intake);
@@ -24,6 +24,6 @@ public class DeployIntake extends InstantCommand {
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
-    m_Intake.deployIntake();
+    m_Intake.pumpTank();
   }
 }

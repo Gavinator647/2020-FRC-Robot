@@ -12,6 +12,7 @@ import edu.wpi.first.wpilibj.DoubleSolenoid;
 import edu.wpi.first.wpilibj.Spark;
 import edu.wpi.first.wpilibj.DoubleSolenoid.Value;
 import frc.robot.RobotMap;
+import edu.wpi.first.wpilibj.Compressor;
 
 public class Intake extends SubsystemBase {
   /**
@@ -19,10 +20,12 @@ public class Intake extends SubsystemBase {
    */
   DoubleSolenoid intakeSolenoid = null;
   Spark intakeSpark = null;
+  Compressor compress = null;
 
   public Intake() {
     intakeSolenoid = new DoubleSolenoid(RobotMap.INTAKE_SOLENOID_DEPLOY, RobotMap.INTAKE_SOLENOID_RETRACT);
     intakeSpark = new Spark(RobotMap.INTAKE);
+    compress= new Compressor();
   }
 
   public void deployIntake(){
@@ -44,6 +47,14 @@ public class Intake extends SubsystemBase {
   public void stoptake(){
     intakeSpark.setVoltage(0);
   }
+
+  public void pumpTank(){
+    compress.setClosedLoopControl(true);
+  }
+  public void pumpOff(){
+    compress.setClosedLoopControl(false);
+  }
+
   @Override
   public void periodic() {
     // This method will be called once per scheduler run

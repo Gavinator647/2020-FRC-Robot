@@ -13,9 +13,7 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj2.command.button.Button;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.*;
-import frc.robot.subsystems.Drivetrain;
-import frc.robot.subsystems.ExampleSubsystem;
-import frc.robot.subsystems.Intake;
+import frc.robot.subsystems.*;
 import edu.wpi.first.wpilibj2.command.Command;
 
 /**
@@ -27,10 +25,10 @@ import edu.wpi.first.wpilibj2.command.Command;
 public class RobotContainer {
   // The robot's subsystems and commands are defined here...
   private final ExampleSubsystem m_exampleSubsystem = new ExampleSubsystem();
-  public static Intake m_Intake = new Intake();
+  private final Intake m_Intake = new Intake();
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
-  private static Drivetrain m_Drive = new Drivetrain();
-  private static Joystick mainStick = new Joystick(0);
+  private final Drivetrain m_Drive = new Drivetrain();
+  Joystick mainStick = new Joystick(0);
 
   /**
    * The container for the robot.  Contains subsystems, OI devices, and commands.
@@ -38,6 +36,7 @@ public class RobotContainer {
   public RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
+    m_Drive.setDefaultCommand(new TeleopDrive(m_Drive, mainStick.getRawAxis(1), mainStick.getRawAxis(4)));
   }
 
   /**
@@ -58,10 +57,12 @@ public class RobotContainer {
     Button LJ = new JoystickButton(mainStick, 9);
     Button RJ = new JoystickButton(mainStick, 10);
 
-    Back.whenPressed(new RetractIntake());
-    Start.whenPressed(new DeployIntake());
-    
-    A.whenPressed(new AutoTurn(90, m_Drive));
+    Back.whenPressed(new RetractIntake(m_Intake));
+    Start.whenPressed(new DeployIntake(m_Intake));
+    LB.whenPressed(new StopCompress(m_Intake));
+    RB.whenPressed(new StartCompress(m_Intake));
+
+    A.whenPressed(new AutoTurn(90,m_Drive));
     //B.whenPressed(new AutoTurn(180));
   }
 

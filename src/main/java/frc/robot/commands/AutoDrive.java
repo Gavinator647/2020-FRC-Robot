@@ -15,11 +15,11 @@ public class AutoDrive extends CommandBase {
    * Creates a new AutoDrive.
    */
   double distance;
-  private final Drivetrain drive2 = new Drivetrain();
-  public AutoDrive(double distance) {
+  private final Drivetrain m_Drive;
+  public AutoDrive(double distance, Drivetrain subsystem) {
     // Use addRequirements() here to declare subsystem dependencies.
-    
-    addRequirements(drive2);
+    m_Drive = subsystem;
+    addRequirements(m_Drive);
     this.distance=distance;
   }
 
@@ -27,30 +27,30 @@ public class AutoDrive extends CommandBase {
   @Override
   public void initialize() {
     
-    drive2.resetEncoder();
-    drive2.resetGyro();
+    m_Drive.resetEncoder();
+    m_Drive.resetGyro();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
     
-    double moveSpeed = distance - drive2.getDistance()*(1/24);
-    double rotateSpeed = 0 - drive2.getAngle()*(1/1440);
-    drive2.arcadeDrive(moveSpeed, rotateSpeed);
+    double moveSpeed = distance - m_Drive.getDistance()*(1/24);
+    double rotateSpeed = 0 - m_Drive.getAngle()*(1/1440);
+    m_Drive.arcadeDrive(moveSpeed, rotateSpeed);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
-    drive2.arcadeDrive(0, 0);
+    m_Drive.arcadeDrive(0, 0);
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
     
-    if (distance - drive2.getDistance()<=1 || distance - drive2.getDistance()>=-1) return true;
+    if (distance - m_Drive.getDistance()<=1 || distance - m_Drive.getDistance()>=-1) return true;
   
     return false;
   }

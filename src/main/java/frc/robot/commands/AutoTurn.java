@@ -14,42 +14,42 @@ public class AutoTurn extends CommandBase {
   /**
    * Creates a new AutoTurn.
    */
-  private Drivetrain drive3 = new Drivetrain();
+  private final Drivetrain m_Drive;
   double angle;
-  public AutoTurn(double angle, Drivetrain drivetrain) {
+  public AutoTurn(double angle, Drivetrain subsystem) {
     // Use addRequirements() here to declare subsystem dependencies.
-    addRequirements(drive3);
+    m_Drive = subsystem;
+    addRequirements(m_Drive);
     this.angle = angle;
-    drive3=drivetrain;
   }
 
   // Called when the command is initially scheduled.
   @Override
   public void initialize() {
     
-    drive3.resetGyro();
+    m_Drive.resetGyro();
   }
 
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
     
-    //double rotateSpeed = angle - RobotContainer.drive3.getAngle() * (1/3600);
-    drive3.arcadeDrive(0, 0.25);
+    //double rotateSpeed = angle - RobotContainer.m_Drive.getAngle() * (1/3600);
+    m_Drive.arcadeDrive(0, 0.5);
   }
 
   // Called once the command ends or is interrupted.
   @Override
   public void end(boolean interrupted) {
     
-    drive3.arcadeDrive(0, 0);
+    m_Drive.arcadeDrive(0, 0);
   }
 
   // Returns true when the command should end.
   @Override
   public boolean isFinished() {
     
-    if(angle - drive3.getAngle()<=0.5 && angle - drive3.getAngle()>=-0.5 ) return true;
+    if(angle - m_Drive.getAngle()<=0.5 && angle - m_Drive.getAngle()>=-0.5 ) return true;
     return false;
   }
 }

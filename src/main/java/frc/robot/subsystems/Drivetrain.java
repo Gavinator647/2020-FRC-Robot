@@ -54,7 +54,7 @@ public class Drivetrain extends SubsystemBase {
    * @param rotateSpeed rotational speed
    */
   public void arcadeDrive(double moveSpeed, double rotateSpeed){
-    drive.arcadeDrive(moveSpeed, rotateSpeed);
+    drive.arcadeDrive(moveSpeed, rotateSpeed,false);
   }
 
   public double getAngle(){
