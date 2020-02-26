@@ -28,6 +28,9 @@ public class RobotContainer {
   private final Intake m_Intake = new Intake();
   private final ExampleCommand m_autoCommand = new ExampleCommand(m_exampleSubsystem);
   private final Drivetrain m_Drive = new Drivetrain();
+  private final Climb m_Climb = new Climb();
+  private final Chamber m_Chamber = new Chamber();
+  private final Shooter m_Shooter = new Shooter();
   Joystick mainStick = new Joystick(0);
 
   /**

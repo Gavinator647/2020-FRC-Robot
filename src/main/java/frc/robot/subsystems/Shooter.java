@@ -22,19 +22,15 @@ public class Shooter extends SubsystemBase {
     rsSpark = new Spark(RobotMap.RIGHT_FLYWHEEL);
   }
 
-  public void manualShot(){
-    lsSpark.setVoltage(6);
-    rsSpark.setVoltage(-6);
+  public void manualShot(double leftspeed, double rightspeed){
+    lsSpark.setVoltage(leftspeed);
+    rsSpark.setVoltage(-rightspeed);
   }
 
   public void autoShot(){
 
   }
-
-  public void stopShooter(){
-    lsSpark.setVoltage(0);
-    rsSpark.setVoltage(0);
-  }
+  
   @Override
   public void periodic() {
     // This method will be called once per scheduler run

@@ -23,15 +23,15 @@ public class Climb extends SubsystemBase {
     winchSpark = new Spark(RobotMap.WINCH);
   }
 
-  public void reach(){
+  public void raisehook(){
     reachSpark.setVoltage(6);
   }
 
-  public void shorten(){
+  public void lowerhook(){
     reachSpark.setVoltage(-6);
   }
 
-  public void stopReach(){
+  public void stophook(){
     reachSpark.setVoltage(0);
   }
 
