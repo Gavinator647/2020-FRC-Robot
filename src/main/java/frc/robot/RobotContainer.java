@@ -65,8 +65,8 @@ public class RobotContainer {
     LB.whenPressed(new StopCompress(m_Intake));
     RB.whenPressed(new StartCompress(m_Intake));
 
-    A.whenPressed(new AutoTurn(90,m_Drive));
-    //B.whenPressed(new AutoTurn(180));
+    B.whenPressed(new ManualShoot(m_Shooter, 65, 65));
+    
   }
 
 
