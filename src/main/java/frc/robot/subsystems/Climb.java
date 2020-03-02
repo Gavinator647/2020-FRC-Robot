@@ -7,7 +7,7 @@
 
 package frc.robot.subsystems;
 
-import edu.wpi.first.wpilibj.Spark;
+import edu.wpi.first.wpilibj.PWMSparkMax;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
 import frc.robot.RobotMap;
 
@@ -15,12 +15,12 @@ public class Climb extends SubsystemBase {
   /**
    * Creates a new Climb.
    */
-  Spark reachSpark = null;
-  Spark winchSpark = null;
+  PWMSparkMax reachSpark = null;
+  PWMSparkMax winchSpark = null;
   
   public Climb() {
-    reachSpark = new Spark(RobotMap.LIFT);
-    winchSpark = new Spark(RobotMap.WINCH);
+    reachSpark = new PWMSparkMax(RobotMap.LIFT);
+    winchSpark = new PWMSparkMax(RobotMap.WINCH);
   }
 
   public void raisehook(){

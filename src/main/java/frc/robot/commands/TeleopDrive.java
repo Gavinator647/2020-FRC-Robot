@@ -7,6 +7,8 @@
 
 package frc.robot.commands;
 
+import java.util.function.DoubleSupplier;
+
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Drivetrain;
 
@@ -15,9 +17,9 @@ public class TeleopDrive extends CommandBase {
    * Creates a new TeleopDrive.
    */
   private final Drivetrain m_Drive;
-  private double moveSpeed;
-  private double rotateSpeed;
-  public TeleopDrive(Drivetrain subsystem, double moveSpeed, double rotateSpeed) {
+  private final DoubleSupplier moveSpeed;
+  private final DoubleSupplier rotateSpeed;
+  public TeleopDrive(Drivetrain subsystem, DoubleSupplier moveSpeed, DoubleSupplier rotateSpeed) {
     // Use addRequirements() here to declare subsystem dependencies.
     m_Drive = subsystem;
     addRequirements(m_Drive);
@@ -33,7 +35,7 @@ public class TeleopDrive extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_Drive.arcadeDrive(moveSpeed, rotateSpeed);
+    m_Drive.arcadeDrive(moveSpeed.getAsDouble(), rotateSpeed.getAsDouble());
   }
 
   // Called once the command ends or is interrupted.

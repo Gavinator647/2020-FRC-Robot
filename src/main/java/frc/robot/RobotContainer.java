@@ -10,6 +10,7 @@ package frc.robot;
 import edu.wpi.first.wpilibj.GenericHID;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.XboxController;
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj2.command.button.Button;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
 import frc.robot.commands.*;
@@ -39,6 +40,7 @@ public class RobotContainer {
   public RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
+    m_Drive.setDefaultCommand(new TeleopDrive(m_Drive, () -> mainStick.getY(Hand.kLeft), () -> mainStick.getX(Hand.kRight)));
   }
 
   /**
@@ -58,8 +60,6 @@ public class RobotContainer {
     Button Start = new JoystickButton(mainStick, 8);
     Button LJ = new JoystickButton(mainStick, 9);
     Button RJ = new JoystickButton(mainStick, 10);
-
-    m_Drive.setDefaultCommand(new TeleopDrive(m_Drive, mainStick.getRawAxis(1), mainStick.getRawAxis(4)));
     
     Back.whenPressed(new RetractIntake(m_Intake));
     Start.whenPressed(new DeployIntake(m_Intake));
