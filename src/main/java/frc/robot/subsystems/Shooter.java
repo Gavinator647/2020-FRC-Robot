@@ -23,7 +23,7 @@ public class Shooter extends SubsystemBase {
   }
 
   public void manualShot(double leftspeed, double rightspeed){
-    lsSpark.setVoltage(leftspeed);
+    lsSpark.setVoltage(-leftspeed);
     rsSpark.setVoltage(-rightspeed);
   }
 

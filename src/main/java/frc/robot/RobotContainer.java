@@ -39,7 +39,6 @@ public class RobotContainer {
   public RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
-    m_Drive.setDefaultCommand(new TeleopDrive(m_Drive, mainStick.getRawAxis(1), mainStick.getRawAxis(4)));
   }
 
   /**
@@ -60,13 +59,32 @@ public class RobotContainer {
     Button LJ = new JoystickButton(mainStick, 9);
     Button RJ = new JoystickButton(mainStick, 10);
 
+    m_Drive.setDefaultCommand(new TeleopDrive(m_Drive, mainStick.getRawAxis(1), mainStick.getRawAxis(4)));
+    
     Back.whenPressed(new RetractIntake(m_Intake));
     Start.whenPressed(new DeployIntake(m_Intake));
-    LB.whenPressed(new StopCompress(m_Intake));
-    RB.whenPressed(new StartCompress(m_Intake));
-
-    B.whenPressed(new ManualShoot(m_Shooter, 65, 65));
     
+    X.whenPressed(new RaiseHook(m_Climb));
+    X.whenReleased(new RestHook(m_Climb));
+    
+    Y.whenPressed(new PullUp(m_Climb));
+    Y.whenReleased(new RestClimb(m_Climb));
+    
+    A.whenPressed(new IntakeBalls(m_Intake));
+    A.whenReleased(new StopIntake(m_Intake));
+
+    //LB.whenPressed(new ManualShoot(m_Shooter, 40, 40));
+    //LB.whenReleased(new StopShooter(m_Shooter));
+
+    RB.whenPressed(new ManualShoot(m_Shooter, 65, 65));
+    RB.whenReleased(new StopShooter(m_Shooter));
+
+    LJ.whenPressed(new ChamberLoad(m_Chamber));
+    LJ.whenReleased(new ChamberHalt(m_Chamber));
+
+    RJ.whenPressed(new ChamberFreeSpin(m_Chamber));
+    RJ.whenReleased(new ChamberHalt(m_Chamber));
+
   }
 
 
