@@ -15,34 +15,38 @@ public class Climb extends SubsystemBase {
   /**
    * Creates a new Climb.
    */
-  PWMSparkMax reachSpark = null;
+  PWMSparkMax liftSpark = null;
   PWMSparkMax winchSpark = null;
   
   public Climb() {
-    reachSpark = new PWMSparkMax(RobotMap.LIFT);
+    liftSpark = new PWMSparkMax(RobotMap.LIFT);
     winchSpark = new PWMSparkMax(RobotMap.WINCH);
   }
 
   public void raisehook(){
-    reachSpark.setVoltage(6);
+    liftSpark.setSpeed(-1);
   }
 
   public void lowerhook(){
-    reachSpark.setVoltage(-6);
+    liftSpark.setVoltage(-6);
   }
 
   public void stophook(){
-    reachSpark.setVoltage(0);
+    liftSpark.setVoltage(0);
   }
 
   public void climb(){
-    winchSpark.setVoltage(-6);
-    reachSpark.setVoltage(-6);
+    winchSpark.setSpeed(-1);
+    liftSpark.setSpeed(0.3);
   }
 
   public void rest(){
     winchSpark.setVoltage(0);
-    reachSpark.setVoltage(0);
+    liftSpark.setVoltage(0);
+  }
+
+  public void unspool(){
+    winchSpark.setSpeed(1);
   }
 
   @Override

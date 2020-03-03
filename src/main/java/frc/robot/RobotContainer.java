@@ -40,7 +40,7 @@ public class RobotContainer {
   public RobotContainer() {
     // Configure the button bindings
     configureButtonBindings();
-    m_Drive.setDefaultCommand(new TeleopDrive(m_Drive, () -> mainStick.getY(Hand.kLeft), () -> mainStick.getX(Hand.kRight)));
+    m_Drive.setDefaultCommand(new TeleopDrive(m_Drive, () -> mainStick.getRawAxis(1), () -> mainStick.getRawAxis(4)));
   }
 
   /**
@@ -70,8 +70,8 @@ public class RobotContainer {
     Y.whenPressed(new PullUp(m_Climb));
     Y.whenReleased(new RestClimb(m_Climb));
     
-    A.whenPressed(new IntakeBalls(m_Intake));
-    A.whenReleased(new StopIntake(m_Intake));
+    A.whenPressed(new Unspool(m_Climb));
+    A.whenReleased(new RestClimb(m_Climb));
 
     //LB.whenPressed(new ManualShoot(m_Shooter, 40, 40));
     //LB.whenReleased(new StopShooter(m_Shooter));

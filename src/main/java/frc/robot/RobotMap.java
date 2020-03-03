@@ -22,8 +22,8 @@ public class RobotMap {
     public static final int INTAKE = 6;
     public static final int LEFT_FLYWHEEL = 11;
     public static final int RIGHT_FLYWHEEL = 10;
-    public static final int LIFT = 8;
-    public static final int WINCH = 9;
+    public static final int LIFT = 9;
+    public static final int WINCH = 8;
 
     public static final int LEFT_DRIVE_ENCODER_FIRST = 0;
     public static final int LEFT_DRIVE_ENCODER_SECOND = 1;
