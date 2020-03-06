@@ -70,20 +70,23 @@ public class RobotContainer {
     Y.whenPressed(new PullUp(m_Climb));
     Y.whenReleased(new RestClimb(m_Climb));
     
-    A.whenPressed(new Unspool(m_Climb));
-    A.whenReleased(new RestClimb(m_Climb));
+    LB.whenPressed(new Unspool(m_Climb));
+    LB.whenReleased(new RestClimb(m_Climb));
 
     //LB.whenPressed(new ManualShoot(m_Shooter, 40, 40));
     //LB.whenReleased(new StopShooter(m_Shooter));
 
-    RB.whenPressed(new ManualShoot(m_Shooter, 65, 65));
+    RB.whenPressed(new ManualShoot(m_Shooter, 8, 8));
     RB.whenReleased(new StopShooter(m_Shooter));
 
-    LJ.whenPressed(new ChamberLoad(m_Chamber));
-    LJ.whenReleased(new ChamberHalt(m_Chamber));
+    A.whenPressed(new ChamberLoad(m_Chamber));
+    A.whenReleased(new ChamberHalt(m_Chamber));
 
-    RJ.whenPressed(new ChamberFreeSpin(m_Chamber));
-    RJ.whenReleased(new ChamberHalt(m_Chamber));
+    //Back.whenPressed(new ChamberFreeSpin(m_Chamber));
+    //Back.whenReleased(new ChamberHalt(m_Chamber));
+
+    B.whenPressed(new IntakeBalls(m_Intake));
+    B.whenReleased(new StopIntake(m_Intake));
 
   }
 

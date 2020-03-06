@@ -24,7 +24,7 @@ public class Climb extends SubsystemBase {
   }
 
   public void raisehook(){
-    liftSpark.setSpeed(-1);
+    liftSpark.setSpeed(-0.8);
   }
 
   public void lowerhook(){
@@ -36,8 +36,8 @@ public class Climb extends SubsystemBase {
   }
 
   public void climb(){
-    winchSpark.setSpeed(-1);
-    liftSpark.setSpeed(0.3);
+    winchSpark.setSpeed(-0.8);
+    liftSpark.setSpeed(0.05);
   }
 
   public void rest(){
@@ -46,7 +46,7 @@ public class Climb extends SubsystemBase {
   }
 
   public void unspool(){
-    winchSpark.setSpeed(1);
+    winchSpark.setSpeed(0.5);
   }
 
   @Override
