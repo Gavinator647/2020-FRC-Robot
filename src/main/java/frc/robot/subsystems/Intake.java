@@ -37,11 +37,11 @@ public class Intake extends SubsystemBase {
   }
   
   public void intake(){
-    intakeSpark.setVoltage(8);
+    intakeSpark.setVoltage(5);
   }
 
   public void outtake(){
-    intakeSpark.setVoltage(-8);
+    intakeSpark.setVoltage(-5);
   }
 
   public void stoptake(){
