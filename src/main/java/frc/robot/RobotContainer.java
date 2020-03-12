@@ -13,6 +13,8 @@ import edu.wpi.first.wpilibj.XboxController;
 import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj2.command.button.Button;
 import edu.wpi.first.wpilibj2.command.button.JoystickButton;
+import edu.wpi.first.wpilibj2.command.button.POVButton;
+import edu.wpi.first.wpilibj2.command.button.Trigger;
 import frc.robot.commands.*;
 import frc.robot.commands.BasicAuto;
 import frc.robot.subsystems.*;
@@ -60,11 +62,19 @@ public class RobotContainer {
     Button Start = new JoystickButton(mainStick, 8);
     Button LJ = new JoystickButton(mainStick, 9);
     Button RJ = new JoystickButton(mainStick, 10);
-
-    double POV= mainStick.getPOV();
+    POVButton Up = new POVButton(mainStick, 360);
+    POVButton Down = new POVButton(mainStick, 180);
+    POVButton Left = new POVButton(mainStick, 270);
+    POVButton Right = new POVButton(mainStick, 90);
     
-    Back.whenPressed(new RetractIntake(m_Intake));
-    Start.whenPressed(new DeployIntake(m_Intake));
+    //Back.whenPressed(new RetractIntake(m_Intake));
+    //Start.whenPressed(new DeployIntake(m_Intake));
+    Back.toggleWhenPressed(new RetractIntake(m_Intake));
+    Back.toggleWhenPressed(new DeployIntake(m_Intake));
+
+    Start.whenPressed(new ChamberUnload(m_Chamber));
+    Start.whenReleased(new ChamberUnload(m_Chamber));
+
 
     A.whenPressed(new ChamberLoad(m_Chamber));
     A.whenReleased(new ChamberHalt(m_Chamber));
@@ -84,9 +94,14 @@ public class RobotContainer {
     RB.whenPressed(new ManualShoot(m_Shooter, 8, 8));
     RB.whenReleased(new StopShooter(m_Shooter));
 
-    while(mainStick.getPOV()==180){
-      new PullUp(m_Climb);
-    }
+    Up.whenPressed(new RaiseHook(m_Climb));
+    Up.whenReleased(new RestClimb(m_Climb));
+
+    Down.whenPressed(new PullUp(m_Climb));
+    Down.whenReleased(new RestHook(m_Climb));
+
+    Right.whenPressed(new Unspool(m_Climb));
+    Right.whenReleased(new RestClimb(m_Climb));
   }
 
 

@@ -24,18 +24,18 @@ public class Chamber extends SubsystemBase {
   }
 
   public void freeSpin(){
-    tcSpark.setSpeed(0.6);
-    bcSpark.setSpeed(0.6);
+    tcSpark.setSpeed(0.5);
+    bcSpark.setSpeed(0.5);
   }
   
   public void load(){
-    tcSpark.setSpeed(0.8);
-    bcSpark.setSpeed(-0.8);
+    tcSpark.setSpeed(0.5);
+    bcSpark.setSpeed(-0.5);
   }
 
   public void unload(){
-    tcSpark.setSpeed(-0.8);
-    bcSpark.setSpeed(0.8);
+    tcSpark.setSpeed(-0.5);
+    bcSpark.setSpeed(0.5);
   }
 
   public void stopChamber(){
