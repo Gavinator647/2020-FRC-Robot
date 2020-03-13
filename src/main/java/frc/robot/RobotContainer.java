@@ -66,17 +66,15 @@ public class RobotContainer {
     POVButton Down = new POVButton(mainStick, 180);
     POVButton Left = new POVButton(mainStick, 270);
     POVButton Right = new POVButton(mainStick, 90);
+    Trigger LT = new Trigger();
     
-    //Back.whenPressed(new RetractIntake(m_Intake));
-    //Start.whenPressed(new DeployIntake(m_Intake));
-    Back.toggleWhenPressed(new RetractIntake(m_Intake));
-    Back.toggleWhenPressed(new DeployIntake(m_Intake));
+    Back.whenPressed(new RetractIntake(m_Intake));
+    RJ.whenPressed(new DeployIntake(m_Intake));
+    //Back.whenPressed(new ToggleIntake(m_Intake));
+    Start.whenPressed(new Unspool(m_Climb));
+    Start.whenReleased(new RestClimb(m_Climb));
 
-    Start.whenPressed(new ChamberUnload(m_Chamber));
-    Start.whenReleased(new ChamberUnload(m_Chamber));
-
-
-    A.whenPressed(new ChamberLoad(m_Chamber));
+    A.whenPressed(new ChamberIntake(m_Chamber));
     A.whenReleased(new ChamberHalt(m_Chamber));
 
     LB.whenPressed(new IntakeBalls(m_Intake));
@@ -88,20 +86,22 @@ public class RobotContainer {
     Y.whenPressed(new PullUp(m_Climb));
     Y.whenReleased(new RestClimb(m_Climb));
     
-    B.whenPressed(new Unspool(m_Climb));
-    B.whenReleased(new RestClimb(m_Climb));
+    B.whenPressed(new ChamberLoad(m_Chamber));
+    B.whenReleased(new ChamberHalt(m_Chamber));
+    //B.whenPressed(new Unspool(m_Climb));
+    //B.whenReleased(new RestClimb(m_Climb));
 
     RB.whenPressed(new ManualShoot(m_Shooter, 8, 8));
     RB.whenReleased(new StopShooter(m_Shooter));
 
-    Up.whenPressed(new RaiseHook(m_Climb));
-    Up.whenReleased(new RestClimb(m_Climb));
+    //Up.whenPressed(new RaiseHook(m_Climb));
+    //Up.whenReleased(new RestClimb(m_Climb));
 
-    Down.whenPressed(new PullUp(m_Climb));
-    Down.whenReleased(new RestHook(m_Climb));
+    //Down.whenPressed(new PullUp(m_Climb));
+    //Down.whenReleased(new RestHook(m_Climb));
 
-    Right.whenPressed(new Unspool(m_Climb));
-    Right.whenReleased(new RestClimb(m_Climb));
+    //Right.whenPressed(new Unspool(m_Climb));
+    //Right.whenReleased(new RestClimb(m_Climb));
   }
 
 

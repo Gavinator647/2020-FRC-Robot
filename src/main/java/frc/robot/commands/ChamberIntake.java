@@ -10,12 +10,12 @@ package frc.robot.commands;
 import edu.wpi.first.wpilibj2.command.CommandBase;
 import frc.robot.subsystems.Chamber;
 
-public class ChamberFreeSpin extends CommandBase {
+public class ChamberIntake extends CommandBase {
   /**
-   * Creates a new ChamberLoad.
+   * Creates a new ChamberIntake.
    */
   private final Chamber m_Chamber;
-  public ChamberFreeSpin(Chamber subsystem) {
+  public ChamberIntake(Chamber subsystem) {
     // Use addRequirements() here to declare subsystem dependencies.
     m_Chamber = subsystem;
     addRequirements(m_Chamber);
@@ -29,7 +29,7 @@ public class ChamberFreeSpin extends CommandBase {
   // Called every time the scheduler runs while the command is scheduled.
   @Override
   public void execute() {
-    m_Chamber.freeSpin();
+    m_Chamber.chamberintake();
   }
 
   // Called once the command ends or is interrupted.

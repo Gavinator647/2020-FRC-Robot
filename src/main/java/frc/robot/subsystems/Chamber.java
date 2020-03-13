@@ -23,9 +23,8 @@ public class Chamber extends SubsystemBase {
     bcSpark = new Spark(RobotMap.BOTTOM_CHAMBER);
   }
 
-  public void freeSpin(){
+  public void chamberintake(){
     tcSpark.setSpeed(0.5);
-    bcSpark.setSpeed(0.5);
   }
   
   public void load(){
