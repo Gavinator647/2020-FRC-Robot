@@ -91,7 +91,7 @@ public class RobotContainer {
     //B.whenPressed(new Unspool(m_Climb));
     //B.whenReleased(new RestClimb(m_Climb));
 
-    RB.whenPressed(new ManualShoot(m_Shooter, 8, 8));
+    RB.whenPressed(new ManualShoot(m_Shooter, 11, 11));
     RB.whenReleased(new StopShooter(m_Shooter));
 
     //Up.whenPressed(new RaiseHook(m_Climb));

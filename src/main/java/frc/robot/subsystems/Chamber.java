@@ -24,17 +24,17 @@ public class Chamber extends SubsystemBase {
   }
 
   public void chamberintake(){
-    tcSpark.setSpeed(0.5);
+    tcSpark.setSpeed(0.55);
   }
   
   public void load(){
-    tcSpark.setSpeed(0.5);
-    bcSpark.setSpeed(-0.5);
+    tcSpark.setSpeed(0.55);
+    bcSpark.setSpeed(-0.55);
   }
 
   public void unload(){
-    tcSpark.setSpeed(-0.5);
-    bcSpark.setSpeed(0.5);
+    tcSpark.setSpeed(-0.55);
+    bcSpark.setSpeed(0.55);
   }
 
   public void stopChamber(){
